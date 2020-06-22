@@ -1,0 +1,22 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans);
+
+body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+h1 > small {
+  margin-top: 0.5em;
+  font-weight: normal;
+  font-size: 1.2vw;
+  color: gray;
+}
+
+#news-input {
+  width: 35vw;
+  height: 200px;
+}
+
+.container {
+  padding-left: 5%;
+  padding-right: 5%;
+}
