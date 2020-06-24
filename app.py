@@ -1,16 +1,17 @@
 import sys
-sys.path.insert(1, '/home/jdnietov/Development/uni/nlp/project/api/services')
 
 from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 
-from ner import recognize_entities
+from covidfake.recognize import recognize_entities
+from covidfake.detect import detect_fake
 
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 recognize_entities('')
+detect_fake('lala')
 
 @app.route('/ner')
 @cross_origin()
