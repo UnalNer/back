@@ -1,6 +1,7 @@
 import sys
 
-from flask import Flask, jsonify
+import json
+from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 
 from covidfake.recognize import recognize_entities
@@ -13,12 +14,21 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 recognize_entities('')
 detect_fake('lala')
 
-@app.route('/ner')
+@app.route('/ner', methods=['POST'])
 @cross_origin()
-def hello():
-    body = recognize_entities('')
+def ner():
+    data = json.loads(request.data)
+    response = recognize_entities(data['text'])
 
-    return jsonify(body)
+    return jsonify(response)
+
+@app.route('/detect', methods=['POST'])
+@cross_origin()
+def predict():
+    data = json.loads(request.data)
+    response = detect_fake(data['text'])
+
+    return jsonify(response)
 
 if __name__ == "__main__":
     app.run(debug=True)
