@@ -23,12 +23,12 @@ model = load_model(f"{PATH}/covidfake/models/ConvolutionalModel.h5")
 model.summary()
 
 embeddings_index = {}
-with open('/tmp/glove.6B.100d.txt') as f:
+with open(f"{PATH}/covidfake/models/glove.6B.100d.txt", 'r') as f:
   for line in f:
-    values = line.split();
-    word = values[0];
-    coefs = np.asarray(values[1:], dtype='float32');
-    embeddings_index[word] = coefs;
+    values = line.split()
+    word = values[0]
+    coefs = np.asarray(values[1:], dtype='float32')
+    embeddings_index[word] = coefs
 
 def __encode(text):
   tokens = word_tokenize(text)
